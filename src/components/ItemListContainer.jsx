@@ -3,9 +3,11 @@ import React from 'react'
 
 const ItemListContainer = ({greeting}) => {
   return (
-    <Flex>
-        <h1>{greeting}</h1>
-    </Flex>
+        <div className='ItemListContainer'>
+          <Flex className='Greeting'>
+            <h1>{greeting}</h1>
+          </Flex>
+        </div>
   )
 }
 

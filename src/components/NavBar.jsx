@@ -8,26 +8,26 @@ import {
 import CartWidget from './CartWidget'
 const NavBar = () => {
   return (
-    <div>
+    <div className='NavBar'>
         <Flex>
-            <Box p='4' >
-            <h3>Computer Store</h3>
+            <Box p='4' className='Logo' >
+            {/* <h3>Computer Store</h3> */}
             </Box>
             <Spacer />
-            <Box p='4' >
+            <Box p='4' className='Menu' >
                 <Menu>
                     <MenuButton>
-                        Categories
+                        Lists
                     </MenuButton>
                     <MenuList>
-                        <MenuItem>Category A</MenuItem>
-                        <MenuItem>Category B</MenuItem>
-                        <MenuItem>Category C</MenuItem>
+                        <MenuItem>Monitores</MenuItem>
+                        <MenuItem>Gabinetes</MenuItem>
+                        <MenuItem>Parlantes</MenuItem>
                     </MenuList>
                 </Menu>
             </Box>
             <Spacer />
-            <Box p='4' >
+            <Box p='4' className='Cart' >
             <CartWidget />
             </Box>
         </Flex>
