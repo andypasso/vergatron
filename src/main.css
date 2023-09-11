@@ -49,6 +49,9 @@
     align-items: center;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
+.MenuItem{
+    color: black;
+}
 .ItemListContainer{
     background-color: rgba(235, 223, 223, 0.5);
     height: 500px;

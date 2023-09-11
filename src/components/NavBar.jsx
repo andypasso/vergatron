@@ -19,7 +19,7 @@ const NavBar = () => {
                     <MenuButton>
                         Lists
                     </MenuButton>
-                    <MenuList>
+                    <MenuList >
                         <MenuItem>Monitores</MenuItem>
                         <MenuItem>Gabinetes</MenuItem>
                         <MenuItem>Parlantes</MenuItem>
