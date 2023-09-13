@@ -1,36 +1,33 @@
-import React from "react";
-import { Card, CardHeader, CardBody, CardFooter, Heading, Text, Button, Center } from '@chakra-ui/react';
-import ItemCount from "./ItemCount";
-import products from "./Products";
+import React from 'react';
+import { Center, Card, CardHeader, CardBody, CardFooter, Heading, Text } from "@chakra-ui/react";
+import ItemCount from './ItemCount';
 
-const ItemDetail = ({ products }) => {
+
+function ItemDetail({ product }) {
+    if (!product) {
+        return <p>Producto no encontrado</p>;
+    }
 
     return (
-        <div>
-            {products.map((p) => {
-                return (
-                    // Esto lo vamos a poner como detalle del item
-                    <div key={p.id} >
-                        <Center p='1rem' >
-                            <Card>
-                                <CardHeader>
-                                    <Heading size="md">{p.name}</Heading>
-                                </CardHeader>
-                                <CardBody>
-                                    <Text>{p.description}</Text>
-                                    <Text>{p.category}</Text>
-                                </CardBody>
-                                <CardFooter>
-                                    <ItemCount />
-                                </CardFooter>
-                            </Card>
-                        </Center>
-                    </div>
-                )
-            })
-            }
+        <div className="item-detail">
+            <Center p='1rem' >
+                <Card>
+                    <CardHeader>
+                        <Heading size="md" fontSize={32} textAlign={'center'} fontWeight="bold">{product.name}</Heading>
+                    </CardHeader>
+                    <CardBody>
+                        <Text fontSize={20} textAlign={'center'} fontWeight="bold">Descripcion</Text>
+                        <Text> {product.description}</Text>
+                        <Text fontSize={20} textAlign={'center'} fontWeight="bold">Categoria</Text>
+                        <Text> {product.category}</Text>
+                    </CardBody>
+                    <CardFooter>
+                        <ItemCount />
+                    </CardFooter>
+                </Card>
+            </Center>
         </div>
-    )
-
+    );
 }
-export default React.memo(ItemDetail)
+
+export default ItemDetail;

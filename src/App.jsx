@@ -1,24 +1,50 @@
-import ItemListContainer from "./components/ItemListContainer"
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from "./components/NavBar"
-import ItemDetailContainer from "./components/ItemDetailContainer"
-import { BrowserRouter } from "react-router-dom"
+import ItemListContainer from "./components/ItemListContainer"
+import ItemDetailContainer from "./components/ItemDetailContainer";
+
 
 const App = () => {
+  const products = [
+    { id: 1, name: "Product 1", description: "Product 1 description", stock: 5, category: "monitores" },
+    { id: 2, name: "Product 2", description: "Product 2 description", stock: 10, category: "monitores" },
+    { id: 3, name: "Product 3", description: "Product 3 description", stock: 30, category: "gabinetes" },
+    { id: 4, name: "Product 4", description: "Product 4 description", stock: 10, category: "gabinetes" },
+    { id: 5, name: "Product 5", description: "Product 5 description", stock: 25, category: "parlantes" },
+    { id: 6, name: "Product 6", description: "Product 6 description", stock: 8, category: "parlantes" },
+  ];
+
 
   return (
-    // <BrowserRouter>
-    <>
-      <NavBar />
+    <Router>
+      <div>
+        <NavBar />
+        <Routes>
+          {/* Ruta principal */}
+          <Route
+            exact path="/"
+            element={<ItemListContainer products={products} />}
+          />
 
-      {/* <Routes> */}
-        {/* <Route exact path="/" element={<ItemListContainer />} />
-        <Route exact path="/category/:id" element={<ItemListContainer />} />
-        <Route exact path="/item/:id" element={<ItemDetailContainer />} /> */}
-      {/* </Routes> */}
-      <ItemListContainer />
-      {/* <ItemDetailContainer /> */}
-    {/* </BrowserRouter> */}
-      </>
+          {/* Ruta de categoría */}
+          <Route
+            path="/category/:id"
+            element={
+              <ItemListContainer
+                products={products}
+              />
+            }
+          />
+          {/* Ruta de detalles del producto */}
+          <Route
+            path="/item/:id"
+            element={
+              <ItemDetailContainer products={products} />
+            }
+          />
+        </Routes>
+      </div>
+    </Router>
   )
 }
 

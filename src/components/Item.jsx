@@ -1,61 +1,41 @@
-import React from "react";
-import { Card, Image, Stack, Text, CardBody, Divider , Button, ButtonGroup, CardFooter, Heading, Center, CardHeader,  } from '@chakra-ui/react';
-import ItemCount from "./ItemCount";
+// src/components/Item.js
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Card } from '@chakra-ui/react';
+import { CardBody } from '@chakra-ui/react';
+import { CardFooter } from '@chakra-ui/react';
+import { ButtonGroup } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
+import { Divider } from '@chakra-ui/react';
+import { Heading } from '@chakra-ui/react';
+import { Image } from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/react';
 
-const Item = ({ product }) => {
-    const [showDetails, setShowDetails] = React.useState(false)
-    const toggleDetails = () => setShowDetails(!showDetails)
+
+function Item({ product }) {
     return (
-        <div>
-            <Card maxW='sm'>
-                <CardBody>
-                    <Image
-                        src={product.image}
-                        borderRadius='lg'
-                    />
-                    <Stack mt='6' spacing='3' >
-                        <Heading size='md' >{product.name}</Heading>
-                        <Text>
-                        </Text>
-                    </Stack>
-                </CardBody>
-                <Divider/>
-                <CardFooter>
-                    <ButtonGroup spacing='2'>
-                        <Button onClick={ toggleDetails } variant='solid' colorScheme="teal">
+        <Card maxW='sm'>
+            <CardBody>
+                <Image
+                    src={product.image}
+                    borderRadius='lg'
+                />
+                <Stack mt='6' spacing='3' >
+                    <Heading size='md' >{product.name}</Heading>
+                </Stack>
+            </CardBody>
+            <Divider />
+            <CardFooter>
+                <ButtonGroup spacing='2'>
+                    <Link to={`/item/${product.id}`}>
+                        <Button variant='solid' colorScheme="teal">
                             See Detail
                         </Button>
-                        
-                        {
-                            showDetails && (
-                                // Esto lo vamos a poner en un componente a parte
-                                <div key={product.id} >
-                                <Center p='1rem' >
-                                    <Card>
-                                        <CardHeader>
-                                            <Heading size="md">{product.name}</Heading>
-                                        </CardHeader>
-                                        <CardBody>
-                                            <Text>{product.description}</Text>
-                                            <Text>{product.category}</Text>
-                                        </CardBody>
-                                        <CardFooter>
-                                            <ItemCount />
-                                        </CardFooter>
-                                    </Card>
-                                </Center>
-                            </div>
-        
-                            )
-                        }
-                    </ButtonGroup>
-                </CardFooter>        
-            </Card>
-        </div>
+                    </Link>
+                </ButtonGroup>
+            </CardFooter>
+        </Card>
     )
-
-
-
-
 }
-export default Item
+
+export default Item;
