@@ -1,6 +1,8 @@
 import React from 'react';
 import { Center, Card, CardHeader, CardBody, CardFooter, Heading, Text } from "@chakra-ui/react";
 import ItemCount from './ItemCount';
+import { doc } from 'firebase/firestore';
+
 
 
 function ItemDetail({ product }) {
@@ -20,6 +22,8 @@ function ItemDetail({ product }) {
                         <Text> {product.description}</Text>
                         <Text fontSize={20} textAlign={'center'} fontWeight="bold">Categoria</Text>
                         <Text> {product.category}</Text>
+                        <Text fontSize={20} textAlign={'center'} fontWeight="bold">Precio</Text>
+                        <Text> {product.price}</Text>
                     </CardBody>
                     <CardFooter>
                         <ItemCount />

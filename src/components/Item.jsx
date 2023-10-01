@@ -1,6 +1,6 @@
 // src/components/Item.js
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Card } from '@chakra-ui/react';
 import { CardBody } from '@chakra-ui/react';
 import { CardFooter } from '@chakra-ui/react';
@@ -27,7 +27,7 @@ function Item({ product }) {
             <Divider />
             <CardFooter>
                 <ButtonGroup spacing='2'>
-                    <Link to={`/item/${product.id}`}>
+                    <Link to={`/item/${product.id}`}>                   
                         <Button variant='solid' colorScheme="teal">
                             See Detail
                         </Button>
