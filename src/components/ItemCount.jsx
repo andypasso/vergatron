@@ -1,16 +1,13 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button, Flex, Text, Box, Spacer } from "@chakra-ui/react";
+import { useCart } from '../context/CartContext'; 
 
-const ItemCount = () => {
+const ItemCount = ({ item }) => {
     const [count, setCount] = useState(0);
+    const { addToCart } = useCart(); // Trae el addToCart del CartContext
 
     const increment = () => {
         setCount(count + 1);
-    };
-
-    const decrement = () => {
-        setCount(count - 1);
     };
 
     return (
@@ -22,13 +19,6 @@ const ItemCount = () => {
             borderRadius="md"
             boxShadow="sm"
         >
-            <Button
-                colorScheme="teal"
-                ml={4}
-                onClick={decrement}
-            >
-                -
-            </Button>
             <Box
                 borderWidth="1px"
                 borderRadius="md"
@@ -40,7 +30,10 @@ const ItemCount = () => {
             <Button
                 colorScheme="teal"
                 mr={4}
-                onClick={increment}
+                onClick={() => {
+                    increment();
+                    addToCart(item);
+                }}
             >
                 +
             </Button>
