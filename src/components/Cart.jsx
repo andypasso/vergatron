@@ -1,9 +1,12 @@
-import React from 'react';
-import { useCart } from '../context/CartContext';
+import React, { useEffect } from 'react';
+import { CartContext } from '../context/CartContext';
+import { useContext } from 'react';
 
 const Cart = () => {
-  const { cart, removeFromCart, clearCart } = useCart();
-
+  const { cart, removeFromCart, clearCart } = useContext(CartContext);
+  useEffect(() => {
+    console.log(cart);
+  },[cart]);
   return (
     <div>
       <h2>Carrito</h2>
@@ -12,14 +15,15 @@ const Cart = () => {
       ) : (
         <div>
             <ul>
-            {cart.map((item) => (
-                <li key={item.id}>
-                {item.name} - {item.price ? `$${item.price.tofixed(2)}` : 'Precio no disponible'}{' '}
-                <button onClick={() => removeFromCart(item)}>Eliminar</button>
+            {cart.map((product) => (
+                <li key={product.item.id}>
+                  <p>{product.quantity}</p>
+                {product.item.name} - {product.item.price ? `$${product.item.price}` : 'Precio no disponible'}{' '}
+                <button onClick={() => removeFromCart(product.item.name)}>Eliminar</button>
                 </li>
             ))}
             </ul>
-          <button onClick={clearCart}>Limpiar Carrito</button>
+          <button onClick = {()=>clearCart()}>Limpiar Carrito</button>
         </div>
       )}
     </div>
